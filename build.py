@@ -8,6 +8,16 @@ from distutils.errors import (
     DistutilsPlatformError,
 )
 
+classifiers = ['Development Status :: 5 - Production/Stable',
+               'Operating System :: POSIX :: Linux',
+               'License :: OSI Approved :: MIT License',
+               'Intended Audience :: Developers',
+               'Programming Language :: Python :: 2.6',
+               'Programming Language :: Python :: 2.7',
+               'Programming Language :: Python :: 3',
+               'Topic :: Software Development',
+               'Topic :: Home Automation',
+               'Topic :: System :: Hardware']
 
 ext_modules = [
     Extension('ASUS.GPIO',
@@ -47,9 +57,19 @@ def build(setup_kwargs):
     """
     This function is mandatory in order to build the extensions.
     """
-    setup_kwargs.update(
-        {"ext_modules": ext_modules, 
-         "cmdclass": {"build_ext": ExtBuilder}}
+    setup_kwargs.update({
+        "name": "ASUS.GPIO",
+        "version": "0.1",
+        "author": "ASUS",
+        "author_email": 'ASUS@asus.com',
+        "description": 'A module to control ASUS GPIO channels',
+        "license": 'MIT',
+        "keywords": 'ASUS GPIO',
+        "classifiers" : classifiers,
+        "ext_modules": ext_modules, 
+        "packages": ['ASUS'],
+        "cmdclass": {"build_ext": ExtBuilder}
+        }
     )
 
 if __name__ == '__main__':

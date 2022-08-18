@@ -32,6 +32,9 @@ int get_asuspi_info(asuspi_info *info)
 	char hardware[1024];
 	int found = 0;
 	char revision[1024];
+
+	revision[0] = '\0';
+
 	if ((fp = fopen("/proc/cpuinfo", "r")) == NULL)
 		return -1;
 	while(!feof(fp)) 
@@ -44,6 +47,24 @@ int get_asuspi_info(asuspi_info *info)
 		}
 		sscanf(buffer, "Revision	: %s", revision);
 
+	}
+	fclose(fp);
+
+	// Try boardinfo also
+	if ((fp = fopen("/proc/boardinfo", "r")) == NULL)
+		return -1;
+	while(!feof(fp))
+	{
+		if(fgets(buffer, sizeof(buffer) , fp) != NULL);
+		sscanf(buffer, "Tinker Board %s", hardware);
+		if (strcmp(hardware, "2S - 16GB") == 0)
+		{
+			found = 1;
+		}
+		else if (strcmp(hardware, "S R2.0") == 0)
+		{
+			found = 1;
+		} // add variants here.
 	}
 	fclose(fp);
 
