@@ -5,7 +5,8 @@ description = ""
 authors = ["Kiet To <kwrazi@gmail.com>"]
 build = "build.py"
 packages = [
-    { include = "ASUS" }
+    { include = "ASUS" },
+    { include = "RPi" },
 ]
 
 [tool.poetry.dependencies]
