@@ -62,4 +62,4 @@ extern int module_setup;
 int check_gpio_priv(void);
 int get_gpio_number(int channel, unsigned int *gpio);
 
-#endif __COMMON_H__
+#endif // __COMMON_H__
